@@ -1,0 +1,38 @@
+[{
+    "id": 1,
+    "name": "ahmed",
+    "grades": [50, 50, 50],
+    "comments": "good",
+    "total": 150
+}, {
+    "id": 2,
+    "name": "ahmed",
+    "grades": [50, 50, 50],
+    "comments": "good",
+    "total": 150
+}, {
+    "id": 3,
+    "name": "ahmed radi",
+    "grades": [50, 50, 20],
+    "comments": "good",
+    "total": 120
+}, {
+    "id": 4,
+    "name": "ahmed radi",
+    "grades": [50, 50, 20],
+    "comments": "good",
+    "total": 120
+}, {
+    "id": 5,
+    "name": "ahmed radi",
+    "grades": [50, 50, 20],
+    "comments": "good",
+    "total": 120
+}, {
+    "id": 6,
+    "name": "ahmed radi",
+    "grades": [50, 50, 20],
+    "comments": "good",
+    "total": 120
+}
+]
