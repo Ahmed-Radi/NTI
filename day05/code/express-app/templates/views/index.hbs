@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Home page</title>
+       <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        {{>header}}
+        <form id='myForm'>
+            <input type="text" id='address'>
+            <button type="submit" id='btn'>Search</button>
+        </form>
+        <p id='location'></p>
+        <p id='forecast'></p>
+        <p id='error'></p>
+        {{!-- <h1>From index hbsssss</h1>
+        <h2>{{title}}</h2>
+        <p>Created by {{name}}</p> --}}
+        {{>footer}}
+        <script src='js/app.js'></script>
+    </body>
+</html>
