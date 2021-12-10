@@ -5,9 +5,9 @@ const forecastWeatherStack = (latitude, longitude, callback) => {
 
     request({url,json:true}, (error, response) => {
         if (error) {
-            callback('Unable to connect to for weather stack', undefined)
+            callback('Unable to connect weather stack', undefined)
         } else if (response.body.error) {
-            callback('error not found', undefined)
+            callback('error not found location', undefined)
         } else {
             callback(undefined, response.body.current.weather_descriptions[0] + ' and temperature is ' + response.body.current.temperature)
         }
