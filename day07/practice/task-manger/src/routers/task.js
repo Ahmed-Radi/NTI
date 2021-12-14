@@ -16,9 +16,25 @@ router.post('/tasks', (req, res) => {
 
 /*******************************************/
 
+// GET - Find all data
+
+router.get('/tasks', (req, res) => {
+    const _id = req.params.id
+    Task.find({}).then((data) => {
+        if (!data) {
+            return res.status(404).send('No tasks')
+        }
+        res.status(200).send(data)
+    }).catch((err) => {
+        res.status(500).send(err)
+    })
+})
+
+/*******************************************/
+
 // GET - Find data by ID
 
-router.get('/tasks/:id', (req, res) => {
+router.get('/task/:id', (req, res) => {
     const _id = req.params.id
     Task.findById(_id).then((data) => {
         if (!data) {
@@ -34,7 +50,7 @@ router.get('/tasks/:id', (req, res) => {
 
 // PATCH - Update By ID
 
-router.patch('/editTask/:id', (req, res) => {
+router.patch('/task/:id', (req, res) => {
     const update = Object.keys(req.body)
     const allowToUpdate = ['description', 'complete']
     const isValid = update.every((el) => allowToUpdate.includes(el))
@@ -62,7 +78,7 @@ router.patch('/editTask/:id', (req, res) => {
 
 // DELETE - Delete By ID
 
-router.delete('/tasks/:id', (req, res) => {
+router.delete('/task/:id', (req, res) => {
     try{
         const _id = req.params.id
         const task = Task.findByIdAndDelete(_id).then((task) => {
