@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 
-const User = require('../modules/users')
+const User = require('../models/users')
 const auth = require('../middleware/auth')
 
 // router.post('/users', (req, res) => {
@@ -95,7 +95,7 @@ router.patch('/users/:id', auth, async (req, res) => {
     const isValid = updates.every((el) => allowedUpdate.includes(el))
 
     if (!isValid) {
-        res.status(400).send("Can't Update")
+        return res.status(400).send("Can't Update")
     }
 
     try{

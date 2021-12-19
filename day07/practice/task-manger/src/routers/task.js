@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router()
 
-const Task = require('../modules/task');
+const Task = require('../models/task');
 
 // POST - Save data
 
@@ -81,12 +81,11 @@ router.patch('/task/:id', (req, res) => {
 router.delete('/task/:id', (req, res) => {
     try{
         const _id = req.params.id
-        const task = Task.findByIdAndDelete(_id).then((task) => {
-            if (!task) {
-                return res.status(400).send("Can't Delete")
-            }
-            res.status(200).send(task)
-        })
+        const task = Task.findByIdAndDelete(_id)
+        if (!task) {
+            return res.status(400).send("Can't Delete")
+        }
+        res.status(200).send(task)
     } catch(error) {
         res.status(500).send(error.message)
     }
