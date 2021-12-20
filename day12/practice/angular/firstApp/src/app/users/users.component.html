@@ -1,0 +1,55 @@
+<p>users works!</p>
+<p>{{message()}}</p>
+
+<button [disabled]="disable">O.K</button>
+<div>
+  <label for="keyup">name</label>
+  <input id="keyup" (keyup)="onkeyup($event)">
+</div>
+
+<img [src]="src" style="width: 200px;height:200px;">
+
+<button (click)="increment()">click my</button>
+<p>count: {{count}}</p>
+
+<input type="text" [(ngModel)]="value" />
+<p>U Entered: {{value}}</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">title</th>
+      <th scope="col">actor</th>
+      <th scope="col">year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let move of movies; let i = index'>
+      <td>{{i+1}}</td>
+      <td>{{move.title}}</td>
+      <td>{{move.actor}}</td>
+      <td>{{move.year}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<input type="text" [(ngModel)]='num1'>
+<div [ngSwitch]="num1">
+  <p *ngSwitchCase=1>one</p>
+  <p *ngSwitchCase=2>two</p>
+  <p *ngSwitchCase=3>three</p>
+  <p *ngSwitchCase=4>four</p>
+  <p *ngSwitchCase=5>five</p>
+  <p *ngSwitchDefault>Default</p>
+</div>
+
+
+
+<input type='checkbox' [(ngModel)]="show" />
+
+
+<p *ngIf="show; else Block">checked</p>
+
+<ng-template #Block>unchecked</ng-template>
