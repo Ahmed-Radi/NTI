@@ -1,3 +1,4 @@
+const multer = require('multer')
 const express = require('express')
 ,router = express.Router()
 ,News = require('../models/news')
@@ -78,6 +79,37 @@ router.delete('/news/:id', auth, async (req, res) => {
             return res.status(404).send('News Not found to Delete!!')
         }
         res.status(200).send(news)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+})
+
+// Add Image
+
+const uploads = multer({
+    limits: {
+        fileSize: 1000000
+    },
+    fileFilter (req, file, cb) {
+        if(!file.originalname.match(/\.(jpg|png|jfif|jpeg)$/)) {
+            cb(new Error('Please Upload Image'))
+        }
+        cb(null,true)
+    }
+})
+
+router.post('/image/:id', auth, uploads.single('image'), async (req, res) => {
+    try {
+        const _id = req.params.id
+        const news = await News.findById(_id)
+        console.log(news)
+        if (!news) {
+            return res.status(404).send('News Not found 404')
+        }
+        console.log(req.file.buffer)
+        news.image = req.file.buffer
+        await news.save()
+        res.status(200).send('Image Uploaded')
     } catch (error) {
         res.status(500).send(error.message)
     }

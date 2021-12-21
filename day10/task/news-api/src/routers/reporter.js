@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const multer = require('multer')
 const Reporter = require('../models/reporter')
 const auth = require('../middleware/auth')
 
@@ -121,6 +122,33 @@ router.delete('/logoutall', auth, async (req, res) => {
 
 router.get('/profile', auth, (req, res) => {
     res.send(req.reporter)
+})
+
+// Add Avatar
+
+const uploads = multer({
+    limits: {
+        fileSize: 1000000
+    },
+    fileFilter (req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png|jfif)$/)) {
+            cb(new Error('Please Upload Image'))
+        }
+        cb(null, true)
+    }
+})
+
+
+router.post('/profile/avatar', auth, uploads.single('avatar'), async (req, res) => {
+    try {
+        req.reporter.avatar = req.file.buffer
+        await req.reporter.save()
+        res.status(200).send('image uploaded')
+    } catch (e) {
+        console.log('ssssssssssssssssssssssssssss')
+        res.status(500).send(e.message)
+    }
+
 })
 
 module.exports = router

@@ -12,22 +12,26 @@ const newsSchema = mongoose.Schema ({
         trim: true,
         required: true
     },
-    created_at: {
-        type: Date,
-        default: Date.now
-    },
+    // created_at: {
+    //     type: Date,
+    //     default: Date.now
+    // },
     // date: {
     //     type: String,
     //     trim: true,
     //     required: true
     // },
-    // image: {},
+    image: {
+        type: Buffer
+    },
     reporter: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Reporter',
     },
-})
+},
+{timestamps: true}
+)
 
 const News = mongoose.model('News', newsSchema)
 
