@@ -1,0 +1,115 @@
+<p>users works!</p>
+
+<p>{{firstName}}</p>
+<p>{{lastName}}</p>
+
+<p>{{2*2}}</p>
+
+{{getMsg()}}
+
+<!------------------------------------------------------------------------>
+<!--Property binding-->
+<h2 [textContent]="title"></h2>
+<h4 [style.color]="color">Example 1</h4>
+
+<button [disabled]="isDisabled">Submit</button>
+<br>
+<img [src]="img" style="width: 200px;">
+<br>
+<br>
+<!-------------------------------------------------------------------------->
+
+<!--Event binding-->
+<p (mouseover)='hover()'>{{text}}</p>
+
+<label for="keyup">Key up</label>
+<input type="text" id="keyup" (keyup)="onKeyUp($event)">
+
+<br>
+<br>
+<label for="keyupp">Key up</label>
+<input type="text" id="keyupp" (keyup)="onKeyUpp($event)">
+
+<br>
+<br>
+<!--Event filter-->
+<label for="keyupenter">Key up Enter</label>
+<input type="text" id="keyupenter" (keyup.enter)="onKeyUp($event)">
+
+<br>
+<br>
+
+<button (click)="clickMe()">Click</button>
+<p>You have clicked {{count}}</p>
+
+<!--Two way data binding--------------------------------------------------------------->
+
+<input type="text" [(ngModel)]="value">
+<p>You entered {{value}}</p>
+
+<!---Directives------------------------------------------------------------------->
+
+<ul>
+    <li *ngFor='let el of fruits'>
+        {{el}}
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor='let user of users'>
+        {{user.name}}
+        {{user.age}}
+        {{user.address}}
+    </li>
+</ul>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Index</th>
+        <th scope="col">Actor</th>
+        <th scope="col">Title</th>
+        <th scope="col">Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let movie of movies; let i=index'>
+          <td>{{i+1}}</td>
+       <td>{{movie.actor}}</td>
+       <td>{{movie.title}}</td>
+       <td>{{movie.year}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-----NgSwitch----------------------------------------------------------------------->
+
+  <input type="text" [(ngModel)]="num1">
+
+  <div [ngSwitch]="num1">
+<p *ngSwitchCase=1>One</p>
+<p *ngSwitchCase=2>Two</p>
+<p *ngSwitchCase=3>Three</p>
+<p *ngSwitchCase=4>Four</p>
+<p *ngSwitchCase=5>Five</p>
+<p *ngSwitchDefault>This is default</p>
+  </div>
+
+  <!------Ngif---------------------------------------------------------------------->
+
+  <p *ngIf='shown'>
+      Hello everyone
+  </p>
+
+  <p *ngIf='!shown; else Block'>Hiiiii</p>
+
+  <ng-template #Block>Hiiii from elseblock</ng-template>
+
+  <br>
+  <br>
+  <input type="checkbox" [(ngModel)]="show">
+<br>
+  <p *ngIf='show; else elseBlock1'>Show is checked</p>
+  <ng-template #elseBlock1>Show is unchecked</ng-template>
+
+  
