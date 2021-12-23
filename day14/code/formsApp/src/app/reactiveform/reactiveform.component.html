@@ -1,0 +1,79 @@
+<form class="mt-5 container" [formGroup]="contactForm">
+  <div class="mb-3">
+    <label for="firstname" class="form-label">FirstName</label>
+    <input
+      type="text"
+      class="form-control"
+      id="firstname"
+      name="firstName"
+      placeholder="Enter your first name"
+      formControlName="firstName"
+      (change)="log()"
+    />
+    <div
+      class="error d-flex justify-content-center"
+      *ngIf="myValues['firstName'].touched && myValues['firstName'].invalid"
+    >
+      <div *ngIf="myValues['firstName'].errors?.['required']">
+        *FirstName is required*
+      </div>
+      <div *ngIf="myValues['firstName'].errors?.['minlength']">
+        *FirstName min length is
+        {{myValues['firstName'].errors?.['minlength'].requiredLength}}*
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="lastname" class="form-label">LastName</label>
+    <input
+      type="text"
+      class="form-control"
+      id="lastname"
+      name="lastname"
+      placeholder="Enter your last name"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="text" class="form-control" id="email" name="email" />
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="gender"
+      id="male"
+      value="male"
+    />
+    <label class="form-check-label" for="male">Male</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="gender"
+      id="female"
+      value="female"
+    />
+    <label class="form-check-label" for="female">Female</label>
+  </div>
+
+  <div class="mb-3 form-check">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      name="isMarried"
+      id="isMarried"
+    />
+    <label class="form-check-label" for="isMarried">IsMarried</label>
+  </div>
+
+  <select class="form-select mb-3" name="country">
+    <option *ngFor="let i of countries">{{ i.name }}</option>
+  </select>
+
+  <button type="submit" class="btn btn-primary mb-3">Submit</button>
+</form>
