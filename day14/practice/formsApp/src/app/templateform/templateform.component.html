@@ -1,0 +1,183 @@
+<h2>template Form!</h2>
+
+<!-- <form action="">
+  <label for="fname">First name</label>
+  <input
+    type="text"
+    id="fname"
+    name="firstName"
+    ngModel
+    #firstName="ngModel"
+    (change)="log(firstName)"
+    require
+    minlength="5"
+    placeholder="Please Enter First name"
+  />
+
+  <label for="lname">Last name</label>
+  <input
+    type="text"
+    id="lname"
+    name="lastName"
+    ngModel
+    #lastName="ngModel"
+    (change)="log(lastName)"
+    require
+    minlength="5"
+    placeholder="Please Enter Last name"
+  />
+
+  <label for="email">Email</label>
+  <input
+    type="email"
+    id="email"
+    class="form-control"
+    name="email"
+    ngModel
+    #email="ngModel"
+    required
+    email
+    placeholder="please Enter Email"
+  />
+
+  <label for="male">male</label>
+  <input type="radio" require ngModel id="male" name="type" />
+  <label for="female">female</label>
+  <input type="radio" require ngModel id="female" name="type" />
+
+  <input
+    type="checkbox"
+    class="form-check-input"
+    ngModel
+    name="isMarried"
+    id="isMarried"
+  />
+  <label class="form-check-label" for="isMarried">isMarried</label>
+
+  <select value="" ngModel name="country" required #country="ngModel">
+    <option value="" *ngFor="let i of countries">{{ i.country }}</option>
+  </select>
+</form> -->
+
+<form #contentForm="ngForm" (ngSubmit)="onSubmit(contentForm.value)" class="container">
+  <div class="mb-3">
+    <label for="fname" class="form-label">First name</label>
+    <input
+      class="form-control"
+      type="text"
+      id="fname"
+      name="firstName"
+      ngModel
+      #firstName="ngModel"
+      (change)="log(firstName)"
+      required
+      minlength="5"
+      placeholder="Please Enter First name"
+    />
+    <div class="error" *ngIf="firstName.touched && firstName.invalid">
+      <div *ngIf="firstName.errors?.['required']">First Name is required</div>
+      <div *ngIf="firstName.errors?.['minlength']">
+        First Name is should have min length 5 you entered
+        {{firstName.errors?.['minlength'].actualLength}} and required
+        {{firstName.errors?.['minlength'].requiredLength}}
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="lname" class="form-label">Last name</label>
+    <input
+      class="form-control"
+      type="text"
+      id="lname"
+      name="lastName"
+      ngModel
+      #lastName="ngModel"
+      (change)="log(lastName)"
+      required
+      minlength="5"
+      placeholder="Please Enter Last name"
+    />
+    <div class="error" *ngIf="lastName.touched && lastName.invalid">
+      <div *ngIf="lastName.errors?.['required']">Last Name is required</div>
+      <div *ngIf="lastName.errors?.['minlength']">
+        Last Name should have min length 5 you entered
+        {{lastName.errors?.['minlength'].actualLength}}
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      id="email"
+      class="form-control"
+      name="email"
+      ngModel
+      #email="ngModel"
+      (change)="log(email)"
+      required
+      email
+      placeholder="please Enter Email"
+    />
+    <div class="error" *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors?.['required']">E-mail is required</div>
+      <div *ngIf="email.errors?.['email']">Enter Valid E-mail</div>
+    </div>
+  </div>
+
+  <label for="male" class="form-check-label"> Male</label>
+  <input
+    type="radio"
+    id="male"
+    class="form-check-input"
+    value="male"
+    name="gender"
+    ngModel
+    #gender="ngModel"
+    required
+  />
+  <br />
+  <label for="female" class="form-check-label">Female</label>
+  <input
+    type="radio"
+    id="female"
+    class="form-check-input"
+    ngModel
+    #gender="ngModel"
+    name="gender"
+    value="female"
+    required
+  />
+
+  <div class="mb-3 form-check">
+    <input
+      type="checkbox"
+      id="isMarried"
+      class="form-check-input"
+      name="isMarried"
+      value="isMarried"
+      ngModel
+      #isMarried="ngModel"
+    />
+    <label class="form-check-label" for="isMarried">isMarried</label>
+  </div>
+
+  <div>
+    <select
+      value=""
+      ngModel
+      name="country"
+      required
+      #country="ngModel"
+      >
+      <option value="2" *ngFor="let i of countries">{{ i.country }}</option>
+    </select>
+    <div *ngIf="country.touched && country.invalid">
+      <div *ngIf="country.errors?.['required']">Please Select a Country</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="contentForm.invalid">Submit</button>
+</form>
