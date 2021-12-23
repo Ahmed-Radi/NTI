@@ -1,0 +1,15 @@
+<p>parent works!</p>
+
+<!--Pass data from parent to child-->
+<!-- <button (click)="increment()">Increment</button>
+<button (click)="decrement()">Decrement</button>
+
+<app-child [count]="Counter"></app-child> -->
+
+<!---------------------------------------------------------------------->
+
+<!--Pass data from child to parent-->
+
+<p>Current count is {{Counter}}</p>
+
+<app-child (countChanged)="countChangeHandler($event)"></app-child>
