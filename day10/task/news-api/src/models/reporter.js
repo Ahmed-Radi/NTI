@@ -54,8 +54,7 @@ const reporterSchema = mongoose.Schema ({
     avatar: {
         type:Buffer,
     }
-},
-{timestamp: true}
+}
 )
 
 // Relation

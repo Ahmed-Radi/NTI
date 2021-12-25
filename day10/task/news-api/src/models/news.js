@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 // const validator = require('validator')
 
+const time = {
+    timestamps: {currentTime: () => new Date().setHours(new Date().getHours() + 2)}
+}
+
 const newsSchema = mongoose.Schema ({
     title: {
         type: String,
@@ -30,7 +34,7 @@ const newsSchema = mongoose.Schema ({
         ref: 'Reporter',
     },
 },
-{timestamps: true}
+time
 )
 
 const News = mongoose.model('News', newsSchema)
