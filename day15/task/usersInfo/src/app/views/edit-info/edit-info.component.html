@@ -1,0 +1,50 @@
+<div class="form-div mt-5">
+  <div class="container">
+    <form #signUpForm="ngForm" (ngSubmit)="editUser(signUpForm.value)">
+      <div class="mb-3">
+        <label for="userName" class="form-label">User Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userName"
+          [(ngModel)]="user.username"
+          ngModel
+          #userName="ngModel"
+          required
+          minlength="5"
+          name="username"
+          placeholder="Enter your name"
+        />
+        <div *ngIf="userName.touched && userName.invalid">
+          <div *ngIf="userName.errors?.['required']">
+            please Enter user name
+          </div>
+          <div *ngIf="userName.errors?.['minlength']"></div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          ngModel
+          #email="ngModel"
+          [(ngModel)]="user.company?.name!"
+          required
+          placeholder="Enter your email"
+        />
+        <div class="error" *ngIf="email.touched && email.invalid">
+          <div *ngIf="email.errors?.['required']">
+            Please enter a email
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary"
+      [disabled]="signUpForm.invalid">Submit</button>
+    </form>
+  </div>
+</div>

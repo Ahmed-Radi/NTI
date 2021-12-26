@@ -1,0 +1,79 @@
+<div class="form-div">
+  <div class="container">
+    <form #signUpForm="ngForm" (ngSubmit)="addUser(signUpForm.value)">
+      <div class="mb-3">
+        <label for="userName" class="form-label">User Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userName"
+          ngModel
+          #userName="ngModel"
+          required
+          minlength="5"
+          name="username"
+          placeholder="Enter your name"
+        />
+        <div *ngIf="userName.touched && userName.invalid">
+          <div *ngIf="userName.errors?.['required']">
+            please Enter user name
+          </div>
+          <div *ngIf="userName.errors?.['minlength']"></div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Company name</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          ngModel
+          #email="ngModel"
+          required
+          email
+          placeholder="Enter your email"
+        />
+        <div class="error" *ngIf="email.touched && email.invalid">
+          <div *ngIf="email.errors?.['required']">
+            Please enter a email
+          </div>
+          <div *ngIf="email.errors?.['email']">
+            plase enter valid email
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary"
+      [disabled]="signUpForm.invalid">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card" style="width: 18rem;" *ngFor="let user of users; let i = index">
+    <div class="card-header">
+      User Info
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">User name: {{user.username}}</li>
+      <li class="list-group-item">User email: {{user.email}}</li>
+      <span *ngIf="user.address?.city">
+        <li class="list-group-item">city: {{user.address?.city}}</li>
+      </span>
+      <span *ngIf="user.address?.geo.lat">
+        <li class="list-group-item">lat: {{user.address?.geo.lat}}</li>
+      </span>
+      <span *ngIf="user.address?.geo.lng">
+        <li class="list-group-item">lng: {{user.address?.geo.lng}}</li>
+      </span>
+      <span *ngIf="user.company?.name">
+        <li class="list-group-item add-p">Company name: {{user.company?.name}}</li>
+      </span>
+      <a routerLink="/singleUser/{{user.id}}" class="btn btn-outline-primary">Show user info</a>
+      <a routerLink="/editUser/{{user.id}}" class="btn btn-outline-success mt-2">Edit user info</a>
+      <a (click)="deleteUser(user.id, i)" class="btn btn-outline-danger mt-2">Delete user</a>
+    </ul>
+  </div>
+</div>

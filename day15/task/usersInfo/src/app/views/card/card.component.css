@@ -1,0 +1,11 @@
+.form-div {
+  margin: 40px auto;
+}
+.card {
+  margin: 15px;
+  margin-right: 19px;
+  display: inline-block;
+}
+.add-p {
+  min-height: 80px
+}
