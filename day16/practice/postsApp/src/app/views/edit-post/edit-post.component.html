@@ -1,0 +1,56 @@
+<div class="container">
+    <form #editInfo="ngForm" (ngSubmit)="editSinglePost(editInfo.value)">
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          [(ngModel)] = 'post.title'
+          required
+          ngModel
+          #title="ngModel"
+          name="title"
+          minlength="3"
+        />
+        <div *ngIf="title.touched && title.invalid">
+          <div *ngIf="title.errors?.['required']">Please Enter Tiltle</div>
+          <div *ngIf="title.errors?.['minlength']">
+            Title must have at least
+            {{title.errors?.['minlength'].requiredLength}} characters you entered
+            {{title.errors?.['minlength'].actualLength}}
+          </div>
+        </div>
+      </div>
+
+      <!-- Body -->
+
+      <div class="mb-3">
+        <label for="body" class="form-label">Body</label>
+        <input
+          type="text"
+          class="form-control"
+          id="body"
+          name="body"
+          [(ngModel)] = 'post.body'
+          required
+          ngModel
+          #body="ngModel"
+          name="body"
+          minlength="3"
+        />
+        <div *ngIf="body.touched && body.invalid">
+          <div *ngIf="body.errors?.['required']">Please enter body</div>
+          <div *ngIf="body.errors?.['minlength']">
+            Body should have at least
+            {{body.errors?.['minlength'].requiredLength}} you entered
+            {{body.errors?.['minlength'].minlength.actualLength}}
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="editInfo.invalid">
+        Submit
+      </button>
+    </form>
