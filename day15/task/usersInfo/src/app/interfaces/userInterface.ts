@@ -3,7 +3,6 @@ export interface Users {
   username?: any,
   company?: any, // company name
   address?: any,
-  geo?: any,
   // page Single user
   name?: string,
   email?: string,
