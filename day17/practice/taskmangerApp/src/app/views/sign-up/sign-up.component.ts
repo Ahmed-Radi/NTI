@@ -12,12 +12,15 @@ export class SignUpComponent implements OnInit {
   invalidEmail:boolean = false
   invalidAge:boolean = false
   Message:string = ''
+  token:any
   constructor(private authService:AuthService, private router:Router) { }
 
-  singUP(credentials:any) {
+  signUp(credentials:any) {
     this.authService.signUp(credentials).subscribe({
       next: (res:any) => {
         console.log(res)
+        this.token = res.token;
+        localStorage.setItem('token', this.token)
         this.router.navigateByUrl('/profile')
       }, error: (HttpError) => {
         console.log(HttpError)

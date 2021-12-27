@@ -1,0 +1,130 @@
+<div class="container signup">
+  <form #signup="ngForm" (ngSubmit)="signUP(signup.value)">
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        required
+        ngModel
+        #email="ngModel"
+        name="email"
+        email
+        (focus)="Email()"
+      />
+      <div class="error" *ngIf="email.touched && email.invalid">
+        <div *ngIf="email.errors?.['required']">
+          Please Enter A Email
+        </div>
+        <div *ngIf="email.errors?.['email']">
+          Please Enter valid a Email
+        </div>
+      </div>
+    </div>
+    <div class="error" *ngIf="invalidEmail">
+      Email Already in-use
+    </div>
+
+    <!-- Name -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        ngModel
+        #name="ngModel"
+        name="name"
+        minlength="6"
+      />
+      <div class="error" *ngIf="name.touched && name.invalid">
+        <div *ngIf="name.errors?.['required']">
+          Please Enter A name
+        </div>
+        <div *ngIf="name.errors?.['minlength']">
+          Please name must have at least {{name.errors?.['minlength'].requiredLength}} characters
+          you entered {{name.errors?.['minlength'].actualLength}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Age -->
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        required
+        ngModel
+        #age="ngModel"
+        name="age"
+        (focus)="Age()"
+      />
+      <div class="error" *ngIf="age.touched && age.invalid">
+        <div *ngIf="age.errors?.['required']">
+          Please Enter A age
+        </div>
+      </div>
+    </div>
+    <div class="error" *ngIf="invalidAge">
+      Age must be a positive number
+    </div>
+
+    <!-- phone -->
+    <div class="mb-3">
+      <label for="phone" class="form-label">phone</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        required
+        ngModel
+        #phone="ngModel"
+        name="phone"
+        minlength="11"
+        (focus)="Phone()"
+      />
+      <div class="error" *ngIf="phone.touched && phone.invalid">
+        <div *ngIf="phone.errors?.['required']">
+          Please Enter A phone number
+        </div>
+        <div *ngIf="phone.errors?.['minlength']">
+          Please Enter phone number correctly it must be {{phone.errors?.['minlength'].requiredLength}} number
+        </div>
+      </div>
+    </div>
+    <div  class="error" *ngIf="invalidPhone">
+      Please enter a valid phone number
+    </div>
+
+    <!-- password -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+        minlength="6"
+      />
+      <div class="error" *ngIf="password.touched && password.invalid">
+        <div *ngIf="password.errors?.['required']">
+          Plase Enter Password
+        </div>
+        <div *ngIf="password.errors?.['minlength']">
+          Password must have a length of {{password.errors?.['minlength'].requiredLength}}
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="signup.invalid">Sign up</button>
+  </form>
+</div>

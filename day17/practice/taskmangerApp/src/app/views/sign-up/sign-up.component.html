@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="sign-up" #singUp="ngForm" (ngSubmit)="singUP(singUp.value)">
+  <form class="sign-up" #singUp="ngForm" (ngSubmit)="signUp(singUp.value)">
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
       <input
@@ -88,9 +88,6 @@
         <div *ngIf="password.errors?.['required']">
           Please Enter password
         </div>
-        <!-- <div *ngIf="password.errors?.['password']">
-          Please enter a valid password
-        </div> -->
       </div>
     </div>
 
