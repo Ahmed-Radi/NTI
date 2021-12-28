@@ -1,0 +1,94 @@
+<form #myForm='ngForm' class="container mt-5" (ngSubmit)="signUp(myForm.value)">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="email"
+      class="form-control"
+      id="name"
+      name="name"
+      ngModel
+      #name=ngModel
+      required
+      minlength="3"
+ 
+    />
+    <div class="error d-flex justify-content-center" *ngIf="name.touched && name.invalid">
+        <div *ngIf="name.errors?.['required']">*Name is required*</div>
+        <div *ngIf="name.errors?.['minlength']" 
+        >*Name minlength is {{name.errors?.['minlength'].requiredLength}}*</div>
+
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      ngModel
+      #email=ngModel
+      required
+      email
+      (focus)='changeEmail()'
+ 
+    />
+    <div class="error d-flex justify-content-center" *ngIf="email.touched && email.invalid">
+        <div *ngIf="email.errors?.['required']">*Email is required*</div>
+        <div *ngIf="email.errors?.['email']" 
+        >*Please enter valid email*</div>
+
+    </div>
+  </div>
+  
+  <div class='error d-flex justify-content-center' *ngIf='invalidEmail'>*Email already in use*</div>
+
+
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input
+      type="number"
+      class="form-control"
+      id="age"
+      name="age"
+      ngModel
+      #age=ngModel
+      required
+      (focus)='changeAge()'
+    
+ 
+    />
+    <div class="error d-flex justify-content-center" *ngIf="age.touched && age.invalid">
+        <div *ngIf="age.errors?.['required']">*Age is required*</div>
+
+    </div>
+    <div class="error d-flex justify-content-center" *ngIf='invalidAge'>*Age must be a postive number*</div>
+
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      ngModel
+      #password=ngModel
+      required
+ minlength="6"
+ 
+    />
+    <div class="error d-flex justify-content-center" *ngIf="password.touched && password.invalid">
+        <div *ngIf="name.errors?.['required']">*Password is required*</div>
+        <div *ngIf="password.errors?.['minlength']" 
+        >*Password minlength is {{password.errors?.['minlength'].requiredLength}}*</div>
+
+    </div>
+
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
