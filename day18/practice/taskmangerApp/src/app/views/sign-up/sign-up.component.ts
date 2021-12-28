@@ -15,7 +15,7 @@ export class SignUpComponent implements OnInit {
   token:any
   constructor(private authService:AuthService, private router:Router) { }
 
-  signUP(credentials:any) {
+  signUp(credentials:any) {
     this.authService.signUp(credentials).subscribe({
       next: (res:any) => {
         console.log(res)

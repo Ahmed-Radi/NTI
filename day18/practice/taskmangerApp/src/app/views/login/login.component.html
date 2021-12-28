@@ -1,5 +1,8 @@
 <div class="container">
-  <form class="login" #login="ngForm" (ngSubmit)="login.value">
+  <form class="login" #login="ngForm" (ngSubmit)="Login(login.value)">
+    <div class="error" *ngIf="invalidEmailOrPassword">
+      invalid Email or password
+    </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
       <input
@@ -12,6 +15,7 @@
         #email="ngModel"
         required
         email
+        (focus)="touchInput"
       />
       <div class="error" *ngIf="email.touched && email.invalid">
         <div *ngIf="email.errors?.['required']">Please Enter E-mail</div>
@@ -29,14 +33,12 @@
         ngModel
         #password="ngModel"
         required
+        (focus)="touchInput"
       />
       <div class="error" *ngIf="password.touched && password.invalid">
         <div *ngIf="password.errors?.['required']">
           Please enter password
         </div>
-        <!-- <div>
-          plase enter correct password
-        </div> -->
       </div>
     </div>
 
