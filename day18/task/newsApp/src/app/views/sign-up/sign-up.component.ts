@@ -30,7 +30,6 @@ export class SignUpComponent implements OnInit {
         } else if (httpError.error.code === 11000) {
           this.invalidEmail = true;
         }
-
       }
     })
   }

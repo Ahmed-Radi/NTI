@@ -1,0 +1,46 @@
+<div class="container">
+  <form class="login" #login="ngForm" (ngSubmit)="Login(login.value)" >
+    <div class="error" *ngIf="invalidEmailOrPassword">Please Check your email or password</div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        required
+        ngModel
+        #email="ngModel"
+        name="email"
+        email
+        (focus)="touchInput()"
+      />
+      <div class="error" *ngIf="email.touched && email.invalid">
+        <div *ngIf="email.errors?.['required']">
+          Please Enter A Email
+        </div>
+        <div *ngIf="email.errors?.['email']">
+          Please Enter valid a Email
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+        (focus)="touchInput()"
+      />
+      <div class="error" *ngIf="password.touched && password.invalid">
+        <div *ngIf="password.errors?.['required']">
+          Plase Enter Password
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
