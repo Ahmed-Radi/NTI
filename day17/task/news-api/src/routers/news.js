@@ -62,7 +62,7 @@ router.patch('/news/:id', auth, async (req, res) => {
             return res.status(404).send("News Not found 404 !!")
         }
         updates.forEach(el => news[el] = req.body[el])
-        // await news.save() // it work without save()
+        await news.save()
         res.status(200).send(news)
     } catch (err) {
         res.status(500).send(err.message)

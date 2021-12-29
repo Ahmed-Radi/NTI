@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { News } from 'src/app/interfaces/newsInterface';
 import { NewsService } from 'src/app/services/news.service';
 
@@ -11,14 +12,23 @@ import { NewsService } from 'src/app/services/news.service';
 export class AddNewsComponent implements OnInit {
 
   news: News[] = []
-  constructor(private fb:FormBuilder,private newsService: NewsService) { }
+  constructor(private fb:FormBuilder,private newsService: NewsService, private router:Router) { }
 
+  addNewsForm = this.fb.group({
+    title:['',[Validators.required, Validators.minLength(3)]],
+    description:['',[Validators.required, Validators.minLength(3)]]
+  })
+
+  get newsValue(){
+    return this.addNewsForm.controls
+  }
 
   addNews(news:News) {
     this.newsService.addNews(news).subscribe({
-      next: (res:any) => {
-        console.log(res) //
-        // this.news = res
+      next: () => {
+        this.router.navigateByUrl('/news')
+      }, error : (httpError) => {
+        console.log(httpError)
       }
     })
   }

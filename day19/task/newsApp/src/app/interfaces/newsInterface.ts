@@ -1,5 +1,5 @@
 export interface News {
   title?:string,
   description?:string,
-  _id:any
+  _id?:any
 }

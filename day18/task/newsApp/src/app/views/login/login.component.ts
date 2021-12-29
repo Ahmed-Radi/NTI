@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
       next: (res:any) => {
         console.log(res)
         this.router.navigateByUrl('/profile')
-        localStorage.setItem('token', res.toke)
+        localStorage.setItem('token', res.token)
         this.invalidEmailOrPassword = false
       }, error: (httpError:any) => {
         this.invalidEmailOrPassword = true

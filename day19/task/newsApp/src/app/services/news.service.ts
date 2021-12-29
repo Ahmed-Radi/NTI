@@ -23,9 +23,10 @@ export class NewsService {
   }
 
   addNews(body:any) {
-    return this.http.post(this.url, body)
+    return this.http.post(this.url+'news', body)
   }
+
   deleteNews(id: string) {
-    this.http.delete(this.url + `news/${id}`)
+    return this.http.delete(this.url + `news/${id}`)
   }
 }

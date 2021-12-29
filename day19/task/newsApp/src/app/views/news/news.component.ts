@@ -20,6 +20,17 @@ export class NewsComponent implements OnInit {
     })
   }
 
+  deleteNews(index:number,id:string,) {
+    this.newsService.deleteNews(id).subscribe({
+      next: () => {
+        console.log('done')
+        this.news.splice(index, 1)
+      }, error: (httpError) => {
+        console.log(httpError)
+      }
+    })
+  }
+
   ngOnInit(): void {
     this.getNews()
   }
