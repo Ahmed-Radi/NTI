@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Completed</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor='let task of tasks;let i = index'>
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.completed}}</td>
+        <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteTask(task._id,i)">Delete</button>
+        </td>
+        <td>
+            <button class="btn btn-success btn-sm" routerLink="/editTask/{{task._id}}">Update</button>
+        </td>
+      </tr>
+   
+    
+    </tbody>
+  </table>

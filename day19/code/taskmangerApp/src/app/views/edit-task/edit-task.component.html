@@ -1,0 +1,21 @@
+<form  #taskForm='ngForm' class="container mt-5" (ngSubmit)="updateTask(taskForm.value)">
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      type="email"
+      class="form-control"
+      id="description"
+      name="description"
+      ngModel
+      required
+      [(ngModel)]='task.description'
+  
+    />
+  </div>
+
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="completed" ngModel name="completed" [(ngModel)]='task.completed' />
+    <label class="form-check-label" for="completed">Completed</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

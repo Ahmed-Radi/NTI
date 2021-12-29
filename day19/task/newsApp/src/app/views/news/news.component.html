@@ -1,0 +1,11 @@
+hiii
+<div class="card" style="width: 18rem;" *ngFor="let new of news">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">{{new.title}}</h5>
+    <p class="card-text">{{new.description}}</p>
+    <a routerLink="/" class="btn btn-primary">View</a>
+    <a routerLink="/" class="btn btn-outline-info">update</a>
+    <!-- <a (clcik)="deleteNews" class="btn btn-outline-danger">Delete</a> -->
+  </div>
+</div>
