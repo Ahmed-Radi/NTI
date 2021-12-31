@@ -91,6 +91,10 @@
       </div>
     </div>
 
+    <div class="mb-3">
+      <input type="file" name="avatar" (change)="handleUpload($event)" accept="image/*" />
+    </div>
+
     <button type="submit" class="btn btn-primary" [disabled]="singUp.invalid">
       Submit
     </button>

@@ -34,8 +34,8 @@ export class UpdateTaskComponent implements OnInit {
 
 
   taskForm = this.fb.group({
-    // title:['']
-    description:['',[Validators.required, Validators.minLength(3)]],
+    title:['', [Validators.required, Validators.minLength(3)]],
+    description:['', [Validators.required, Validators.minLength(3)]],
     complete:[false],
   })
 

@@ -4,7 +4,7 @@
       <label for="name" class="form-label">Name</label>
       <input
         type="text"
-        class="form-control"
+        class="form-control class"
         id="name"
         name="name"
         required
@@ -18,7 +18,7 @@
           PLease enter name
         </div>
         <div *ngIf="name.errors?.['minlength']">
-          name must have at least {{name.errors?.['minlength'].requiredLength}} characters
+          name should have at least {{name.errors?.['minlength'].requiredLength}} characters
           you enterd {{name.errors?.['minlength'].actualLength}}
         </div>
       </div>

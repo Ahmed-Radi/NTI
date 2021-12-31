@@ -11,6 +11,7 @@ import { UsersService } from 'src/app/services/users.service';
 export class ProfileComponent implements OnInit {
 
   user: Users = {};
+  file:any
   constructor(private usersService: UsersService) { }
 
   profile() {
@@ -22,6 +23,11 @@ export class ProfileComponent implements OnInit {
       }
     })
   }
+
+  deleteImage() {
+    this.usersService.deleteImage().subscribe(()=> {})
+  }
+
   ngOnInit(): void {
     this.profile()
   }

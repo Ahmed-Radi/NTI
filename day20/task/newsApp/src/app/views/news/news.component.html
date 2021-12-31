@@ -1,0 +1,12 @@
+<a routerLink="/addnews" class="btn btn-outline-info">Add News</a>
+
+<div class="card" style="width: 18rem;" *ngFor="let news of news;let i = index">
+  <!-- <img src="data:image/png;base64,{{news.image}}" class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">{{news.title}}</h5>
+    <p class="card-text">{{news.description}}</p>
+    <a routerLink="/singlenews/{{news._id}}" class="btn btn-primary">View</a>
+    <a routerLink="/editnews/{{news._id}}" class="btn btn-outline-info">update</a>
+    <a (click)="deleteNews(i, news._id)" class="btn btn-outline-danger">Delete</a>
+  </div>
+</div>

@@ -16,3 +16,12 @@ footer {
   color: #fff;
   text-align: center;
 }
+/* input  {
+  accent-color: auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+input.custom{
+  accent-color: rebeccapurple;
+} */

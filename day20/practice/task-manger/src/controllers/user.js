@@ -135,10 +135,13 @@ const addImage =  async (req, res) => {
 
 const deleteImage = async (req, res) => {
     try {
-        console.log(req.user)
-        req.user.image = ''
+        req.user.avatar = undefined
+        await req.user.save()
+        // console.log(req.user)
+        res.status(200).send()
     } catch (e) {
         console.log(e)
+        res.status(500).send()
     }
 }
 

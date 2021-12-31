@@ -12,7 +12,6 @@ export class EditProfileComponent implements OnInit {
 
   user:Users = {}
   file:any
-  public ImgUrl = ' ';
   constructor(private usersService:UsersService, private router:Router) { }
 
   profile() {

@@ -2,23 +2,24 @@
 <div class="container">
   <form [formGroup]="taskForm" (ngSubmit)="updateTask(taskForm.value)">
     <!-- Title -->
-    <!-- <div class="mb-3">
+    <div class="mb-3">
       <label for="title" class="form-label">Title</label>
       <input
         type="text"
         class="form-control"
         id="title"
         formControlName="title"
+        [(ngModel)]="task.title"
       />
-      <div *ngIf="myValues['title'].touched && myValues['title'].invalid">
+      <div class="error" *ngIf="myValues['title'].touched && myValues['title'].invalid">
         <div *ngIf="myValues['title'].errors?.['required']">Please Enter Tiltle</div>
         <div *ngIf="myValues['title'].errors?.['minlength']">
-          Title must have at least
+          Title should have at least
           {{myValues['title'].errors?.['minlength'].requiredLength}} characters you entered
           {{myValues['title'].errors?.['minlength'].actualLength}}
         </div>
       </div>
-    </div> -->
+    </div>
 
     <!-- Description -->
 
@@ -32,12 +33,12 @@
         formControlName="description"
         [(ngModel)]="task.description"
       />
-      <div *ngIf="myValues['description'].touched && myValues['description'].invalid">
+      <div class="error" *ngIf="myValues['description'].touched && myValues['description'].invalid">
         <div *ngIf="myValues['description'].errors?.['required']">Please enter body</div>
         <div *ngIf="myValues['description'].errors?.['minlength']">
-          Body should have at least
+          Description should have at least
           {{myValues['description'].errors?.['minlength'].requiredLength}} you entered
-          {{myValues['description'].errors?.['minlength'].minlength.actualLength}}
+          {{myValues['description'].errors?.['minlength'].actualLength}}
         </div>
       </div>
     </div>

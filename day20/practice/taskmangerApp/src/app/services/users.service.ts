@@ -22,4 +22,8 @@ export class UsersService {
     return this.http.post(this.url+'profile/avatar', image)
   }
 
+  deleteImage() {
+    return this.http.delete(this.url+'profile/deleteavatar')
+  }
+
 }

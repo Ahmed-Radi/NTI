@@ -61,7 +61,9 @@ const uploads = multer({
 
 router.post('/profile/avatar', auth, uploads.single('avatar'), controller.addImage)
 
-router.post('/profile/deleteavatar', auth, controller.deleteImage)
+// Delete image
+
+router.delete('/profile/deleteavatar', auth, controller.deleteImage)
 
 module.exports = router
 

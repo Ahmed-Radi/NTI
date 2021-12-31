@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,24 @@ export class SignUpComponent implements OnInit {
   invalidAge:boolean = false
   Message:string = ''
   token:any
-  constructor(private authService:AuthService, private router:Router) { }
+  file:any
+  constructor(private authService:AuthService, private router:Router, private usersService:UsersService) { }
+
+  handleUpload(event:any) {
+    // console.log(event)
+    this.file = event.target.files
+    // console.log("image",this.file)
+  }
+
+  uploadFile() {
+    if(this.file) {
+      const myData = new FormData()
+      for(let i = 0 ; i < this.file.length; i++) {
+        myData.append('avatar',this.file[0])
+      }
+      this.usersService.addImage(myData).subscribe(()=>{})
+    }
+  }
 
   signUp(credentials:any) {
     this.authService.signUp(credentials).subscribe({
@@ -21,6 +39,7 @@ export class SignUpComponent implements OnInit {
         console.log(res)
         this.token = res.token;
         localStorage.setItem('token', this.token)
+        this.uploadFile()
         this.router.navigateByUrl('/profile')
       }, error: (HttpError) => {
         console.log(HttpError)
@@ -40,6 +59,7 @@ export class SignUpComponent implements OnInit {
   Age() {
     this.invalidAge = false;
   }
+
   ngOnInit(): void {
   }
 

@@ -1,0 +1,15 @@
+h2 span {
+  color: #5757ce;
+}
+.info {
+  padding: 15px;
+  margin-top: 20px;
+}
+.info span {
+  font-weight: 600;
+  color: #5757ce;
+  text-transform: capitalize;
+}
+h2 span {
+  text-transform: capitalize;
+}

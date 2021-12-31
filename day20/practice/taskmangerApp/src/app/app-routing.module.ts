@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'viewtask',component: ViewTasksComponent,canActivate:[AuthGuardService]},
   {path: 'addtask',component:AddTasksComponent,canActivate:[AuthGuardService]},
   {path: 'edittask/:id', component:UpdateTaskComponent,canActivate:[AuthGuardService]},
-  {path: 'editprofile', component:EditProfileComponent,canActivate:[AuthGuardService]}
+  {path: 'editprofile', component:EditProfileComponent,canActivate:[AuthGuardService]},
 ];
 
 @NgModule({

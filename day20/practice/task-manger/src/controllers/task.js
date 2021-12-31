@@ -35,7 +35,7 @@ const getTaskById = async (req, res) => {
 const editTask = async (req, res) => {
     try {
         const update = Object.keys(req.body)
-        const allowToUpdate = ['description', 'complete']
+        const allowToUpdate = ['title', 'description', 'complete']
         const isValid = update.every((el) => allowToUpdate.includes(el))
 
         if (!isValid) {

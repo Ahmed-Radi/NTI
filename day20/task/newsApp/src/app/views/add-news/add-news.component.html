@@ -1,0 +1,50 @@
+<div class="container">
+  <form
+    #AddNews="ngForm"
+    [formGroup]="addNewsForm"
+    (ngSubmit)="addNews(addNewsForm.value)"
+  >
+    <div class="mb-3">
+      <label for="title" class="form-label">title</label>
+      <input
+        type="email"
+        class="form-control"
+        id="title"
+        name="title"
+        formControlName="title"
+      />
+      <div class="error" *ngIf="addNewsForm.controls['title'].touched && addNewsForm.controls['title'].invalid">
+        <div *ngIf="addNewsForm.controls['title'].errors?.['required']">
+          Please enter a title
+        </div>
+        <div *ngIf="addNewsForm.controls['title'].errors?.['minlength']">
+          title must have at least {{newsValue['title'].errors?.['minlength'].requiredLength}}
+          you entered {{newsValue['title'].errors?.['minlength'].actualLength}}
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        name="description"
+        formControlName="description"
+      />
+      <div class="error" *ngIf="newsValue['description'].touched && newsValue['description'].invalid">
+        <div *ngIf="newsValue['description'].errors?.['required']">
+          Please entered Description
+        </div>
+        <div *ngIf="newsValue['description'].errors?.['minlength']">
+          Description must have at least {{newsValue['description'].errors?.['minlength'].requiredLength}}
+          you enterd {{newsValue['description'].errors?.['minlength'].actualLength}}
+        </div>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" [disabled]="addNewsForm.invalid">Submit</button>
+  </form>
+</div>
