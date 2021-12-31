@@ -1,0 +1,32 @@
+<form #myForm='ngForm' class="container mt-5" (ngSubmit)="editProfile(myForm.value)">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        ngModel
+        #name=ngModel
+        required
+        minlength="3"
+        [(ngModel)]="user.name"
+   
+      />
+      <div class="error d-flex justify-content-center" *ngIf="name.touched && name.invalid">
+          <div *ngIf="name.errors?.['required']">*Name is required*</div>
+          <div *ngIf="name.errors?.['minlength']" 
+          >*Name minlength is {{name.errors?.['minlength'].requiredLength}}*</div>
+  
+      </div>
+  
+    </div>
+
+    <br>
+    <br>
+
+    <input type="file" name="avatar" (change)="handleUpload($event)" accept="image/*">
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  

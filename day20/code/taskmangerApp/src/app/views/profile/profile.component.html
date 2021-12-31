@@ -1,0 +1,16 @@
+<h2 data-aos="fade-right">Welcome {{user.name}}</h2>
+
+<a routerLink='/tasks'>
+    <button class="btn btn-sm btn-primary">Views Tasks</button>
+</a>
+
+<a routerLink='/addTask'>
+    <button class="btn btn-sm btn-primary">Add Tasks</button>
+</a>
+
+<br>
+<br>
+
+<!--data:[mediatype][:base64],{{data.img}}-->
+<!-- base 64 algo converts characters image-->
+<img src='data:image/png;base64,{{user.avatar}}' width="200px" alt='Profile Image'>

@@ -1,0 +1,33 @@
+<form class="container mt-5" [formGroup]='taskForm' (ngSubmit)="addTask(taskForm.value)">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+     formControlName='title'
+     name="title"
+    />
+    <div class="error d-flex justify-content-center" *ngIf="taskForm.controls['title'].touched && taskForm.controls['title'].invalid">
+        <div *ngIf='taskForm.controls["title"].errors?.["required"]'>*Tilte is requird*</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+     formControlName='description'
+     name="description"
+    />
+    <div class="error d-flex justify-content-center" *ngIf="taskValue['description'].touched && taskValue['description'].invalid">
+        <div *ngIf='taskValue["description"].errors?.["required"]'>*Description is requird*</div>
+    </div>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="completed" formControlName="completed" name="completed" />
+    <label class="form-check-label" for="completed">Completed</label>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Submit</button>
+</form>
