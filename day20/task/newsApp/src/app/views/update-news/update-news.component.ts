@@ -25,28 +25,29 @@ export class UpdateNewsComponent implements OnInit {
     })
   }
 
+  addImageHandle(event:any) {
+    this.file = event.target.files
+  }
+
+  uploadFile() {
+    if (this.file) {
+      const myData = new FormData()
+      for(let i=0; i<this.file.length; i++) {
+        myData.append('image',this.file[i])
+      }
+      this.newsService.addImage(this.id, myData).subscribe(() => {})
+    }
+  }
+
   editNews (news:News) {
     this.newsService.editNews(this.id, news).subscribe({
       next: () => {
-        console.log(news)
+        // console.log(news)
+        this.uploadFile()
         this.router.navigateByUrl('/news')
       }
     })
   }
-
-  // addImageHandle(event:any) {
-  //   this.file = event.target.files
-  // }
-
-  // uploadFile() {
-  //   if (this.file) {
-  //     const myData = new FormData()
-  //     for(let i=0; i<this.file.length; i++) {
-  //       myData.append('image',this.file[i])
-  //     }
-  //     this.newsService.addImage(this.id, myData).subscribe(() => {})
-  //   }
-  // }
 
   editNewsForm = this.fb.group({
     title: ['',[Validators.required, Validators.minLength(3)]],

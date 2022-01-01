@@ -45,9 +45,10 @@
       </div>
     </div>
 
-    <!-- <div>
-      <input type="file" (change)="addImageHandle($event)" width="200px" accept="image/*" />
-    </div> -->
+    <div>
+      <label for="image">Add image: </label>
+      <input type="file" id="image" (change)="addImageHandle($event)" width="200px" name="iamge" accept="image/*" />
+    </div>
     <button type="submit" class="btn btn-primary" [disabled]="editNewsForm.invalid">Submit</button>
   </form>
 </div>

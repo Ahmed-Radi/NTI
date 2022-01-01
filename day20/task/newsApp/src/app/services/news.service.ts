@@ -30,7 +30,7 @@ export class NewsService {
     return this.http.delete(this.url + `news/${id}`)
   }
 
-  // addImage(id:string,image:any) {
-  //   return this.http.post(this.url+ `/image/${id}`, image)
-  // }
+  addImage(id:string,image:any) {
+    return this.http.post(this.url+ `image/${id}`, image)
+  }
 }

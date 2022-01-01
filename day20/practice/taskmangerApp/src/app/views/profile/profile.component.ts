@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/interface/userInterface';
-import { AuthService } from 'src/app/services/auth.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -17,9 +16,9 @@ export class ProfileComponent implements OnInit {
   profile() {
     this.usersService.profile().subscribe({
       next:(res:any)=> {
-        console.log(res)
+        // console.log(res)
         this.user = res
-        console.log(this.user.name)
+        // console.log(this.user.name)
       }
     })
   }

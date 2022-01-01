@@ -27,6 +27,15 @@ const newsSchema = mongoose.Schema ({
 time
 )
 
+newsSchema.methods.toJSON = function(){
+    // document
+    const news = this
+
+    // Converts this document into a object
+    const newsObject = news.toObject()
+    return newsObject;
+}
+
 const News = mongoose.model('News', newsSchema)
 
 module.exports = News

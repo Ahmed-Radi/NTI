@@ -100,21 +100,22 @@ const uploads = multer({
 })
 
 router.post('/image/:id', auth, uploads.single('image'), async (req, res) => {
-    try {
+    try{
         const _id = req.params.id
         const news = await News.findById(_id)
-        console.log(news)
-        if (!news) {
-            return res.status(404).send() // 'News Not found 404'
+        if(!news){
+            return res.status(404).send()
         }
-        console.log(req.file.buffer)
+
         news.image = req.file.buffer
         await news.save()
-        res.status(200).send() // 'Image Uploaded'
-    } catch (error) {
-        res.status(500).send(error)
+        res.status(200).send(news)
+    }
+    catch(e) {
+        res.status(400).send(e)
     }
 })
+
 
 
 module.exports = router
