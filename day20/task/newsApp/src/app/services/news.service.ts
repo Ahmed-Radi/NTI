@@ -7,7 +7,7 @@ import { News } from '../interfaces/newsInterface';
 })
 export class NewsService {
 
-  url: string = 'http://localhost:3000/'
+  url: string = 'https://news-api-nti.herokuapp.com/'
   constructor(private http:HttpClient) { }
 
   getNews() {

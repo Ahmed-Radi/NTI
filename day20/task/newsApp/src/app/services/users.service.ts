@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UsersService {
 
-  url:any =  'http://localhost:3000/'
+  url:any =  'https://news-api-nti.herokuapp.com/'
   constructor(private http:HttpClient) {  }
 
   profile () {

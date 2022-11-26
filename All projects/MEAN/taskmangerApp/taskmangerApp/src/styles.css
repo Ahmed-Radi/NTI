@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+.login,.sign-up {
+  padding: 29px;
+  box-shadow: -3px 5px 12px #000;
+  border-radius: 12px;
+  margin-top: 50px;
+}
+.error {
+  color: red;
+  text-transform: capitalize;
+}
+.form-control.ng-pristine.ng-invalid.ng-touched{
+  border: 2px solid red;
+}
+footer {
+  color: #fff;
+  text-align: center;
+}
+/* input  {
+  accent-color: auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+input.custom{
+  accent-color: rebeccapurple;
+} */

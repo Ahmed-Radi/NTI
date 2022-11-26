@@ -1,0 +1,30 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">title</th>
+        <th scope="col">description</th>
+        <th scope="col">complate</th>
+        <th scope="col">update</th>
+        <th scope="col">delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks;let i = index">
+        <th scope="row">{{i +1}}</th>
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.complete}}</td>
+        <td>
+          <a routerLink="/edittask/{{task._id}}">
+            <button class="btn btn-info">Update</button>
+          </a>
+        </td>
+        <td>
+          <button (click)="deleteTask(task._id, i)" class="btn btn-outline-danger">delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

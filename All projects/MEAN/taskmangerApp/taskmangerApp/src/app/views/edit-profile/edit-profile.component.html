@@ -1,0 +1,33 @@
+<div class="container">
+  <form class="sign-up" #singUp="ngForm" (ngSubmit)="updateProfile(singUp.value)">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control class"
+        id="name"
+        name="name"
+        required
+        ngModel
+        #name="ngModel"
+        minlength="3"
+        [(ngModel)]="user.name"
+      />
+      <div class="error" *ngIf="name.touched && name.invalid">
+        <div *ngIf="name.errors?.['required']">
+          PLease enter name
+        </div>
+        <div *ngIf="name.errors?.['minlength']">
+          name should have at least {{name.errors?.['minlength'].requiredLength}} characters
+          you enterd {{name.errors?.['minlength'].actualLength}}
+        </div>
+      </div>
+    </div>
+
+    <input type="file" name="avatar" (change)="handleUpload($event)" accept="image/*"/>
+
+    <button type="submit" class="btn btn-primary" [disabled]="singUp.invalid">
+      Submit
+    </button>
+  </form>
+</div>

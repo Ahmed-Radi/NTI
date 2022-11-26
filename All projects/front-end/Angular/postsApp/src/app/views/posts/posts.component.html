@@ -1,0 +1,89 @@
+<div class="container">
+  <form #addInfo="ngForm" (ngSubmit)="addPost(addInfo.value)">
+    <!-- Title -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        required
+        ngModel
+        #title="ngModel"
+        name="title"
+        minlength="3"
+      />
+      <div *ngIf="title.touched && title.invalid">
+        <div *ngIf="title.errors?.['required']">Please Enter Tiltle</div>
+        <div *ngIf="title.errors?.['minlength']">
+          Title must have at least
+          {{title.errors?.['minlength'].requiredLength}} characters you entered
+          {{title.errors?.['minlength'].actualLength}}
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+
+    <div class="mb-3">
+      <label for="body" class="form-label">Body</label>
+      <input
+        type="text"
+        class="form-control"
+        id="body"
+        required
+        ngModel
+        #body="ngModel"
+        name="body"
+        minlength="3"
+      />
+      <div *ngIf="body.touched && body.invalid">
+        <div *ngIf="body.errors?.['required']">Please enter body</div>
+        <div *ngIf="body.errors?.['minlength']">
+          Body should have at least
+          {{body.errors?.['minlength'].requiredLength}} you entered
+          {{body.errors?.['minlength'].minlength.actualLength}}
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="addInfo.invalid">
+      Submit
+    </button>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">title</th>
+        <th scope="col">body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts; let i = index">
+        <td>{{ post.id }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.body }}</td>
+        <td>
+          <a routerLink="/singlePost/{{ post.id }}">
+            <button class="btn btn-primary">View</button>
+          </a>
+        </td>
+        <td>
+          <button
+            class="btn btn-danger"
+            (click)="deletePost(post.id, i)"
+            (click)="showSuccess()"
+          >
+            Delete
+          </button>
+        </td>
+        <td>
+          <a routerLink="/editPost/{{ post.id }}">
+            <button class="btn btn-success">Update</button>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

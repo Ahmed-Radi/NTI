@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  url = "http://localhost:3000/"
+  url = "https://news-api-nti.herokuapp.com/"
   constructor(private http:HttpClient) { }
 
   signUp(credential:any) {

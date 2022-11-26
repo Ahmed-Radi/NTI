@@ -1,0 +1,102 @@
+<div class="container">
+  <form class="sign-up" #singUp="ngForm" (ngSubmit)="signUp(singUp.value)">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        required
+        ngModel
+        #name="ngModel"
+        minlength="3"
+      />
+      <div class="error" *ngIf="name.touched && name.invalid">
+        <div *ngIf="name.errors?.['required']">
+          PLease enter name
+        </div>
+        <div *ngIf="name.errors?.['minlength']">
+          name must have at least {{name.errors?.['minlength'].requiredLength}} characters
+          you enterd {{name.errors?.['minlength'].actualLength}}
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        name="age"
+        required
+        ngModel
+        #age="ngModel"
+        (focus)="Age()"
+      />
+      <div class="error" *ngIf="age.touched && age.invalid">
+        <div *ngIf="age.errors?.['required']">
+          Please Enter Age
+        </div>
+      </div>
+    </div>
+    <div class="error" *ngIf="invalidAge">
+        <!-- Please enter a positive number -->
+        {{Message}}
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        required
+        ngModel
+        email
+        #email="ngModel"
+        (focus)="Email()"
+      />
+      <div class="error" *ngIf="email.touched && email.invalid">
+        <div *ngIf="email.errors?.['required']">
+          Please Enter email
+        </div>
+        <div *ngIf="email.errors?.['email']">
+          Please enter a valid email
+        </div>
+      </div>
+    </div>
+    <div class="error" *ngIf="invalidEmail">
+      Email Already In-Use
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        required
+        ngModel
+        #password="ngModel"
+        minlength="6"
+      />
+      <div class="error" *ngIf="password.touched && password.invalid">
+        <div *ngIf="password.errors?.['required']">
+          Please Enter password
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <input type="file" name="avatar" (change)="handleUpload($event)" accept="image/*" />
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="singUp.invalid">
+      Submit
+    </button>
+  </form>
+</div>

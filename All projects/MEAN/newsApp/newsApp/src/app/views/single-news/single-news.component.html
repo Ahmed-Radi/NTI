@@ -1,0 +1,10 @@
+<!-- <h2>Welcome <span>{{news.name}}</span> !!</h2> -->
+
+<div class="info">
+  <p>title: <span>{{news.title}}</span></p>
+  <p>description: <span>{{news.description}}</span></p>
+</div>
+
+<a routerLink="/news" class="btn btn-primary">View News</a>
+<a routerLink="/addnews" class="btn btn-outline-info">Add News</a>
+<a routerLink="/editnews/{{news._id}}" class="btn btn-outline-info">update</a>

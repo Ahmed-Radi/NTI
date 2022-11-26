@@ -1,0 +1,14 @@
+<h2>Welcome <span>{{user.name}}</span> !!</h2>
+
+<div class="info">
+  <p>Name: <span>{{user.name}}</span></p>
+  <p>Age: <span>{{user.age}}</span></p>
+  <p>Email: <span>{{user.email}}</span></p>
+</div>
+<button class="btn btn-outline-danger" (click)="deleteImage()" *ngIf="user.avatar">Delete Image</button>
+<br />
+<img src="data:image/png;base64,{{user.avatar}}" width="200px" alt="iamge" *ngIf="user.avatar" />
+<div class="buttons">
+  <a class="btn btn-primary" routerLink="/viewtask" >View Task</a>
+  <a class="btn btn-success" routerLink="/addtask" >Add Task</a>
+</div>

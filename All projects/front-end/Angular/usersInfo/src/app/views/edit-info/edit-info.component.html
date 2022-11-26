@@ -1,0 +1,99 @@
+<div class="form-div mt-5">
+  <div class="container">
+    <form #signUpForm="ngForm" (ngSubmit)="editUser(signUpForm.value)">
+      <div class="mb-3">
+        <label for="userName" class="form-label">User Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userName"
+          [(ngModel)]="user.username"
+          ngModel
+          #userName="ngModel"
+          required
+          minlength="5"
+          name="username"
+          placeholder="Enter your name"
+        />
+        <div class="error" *ngIf="userName.touched && userName.invalid">
+          <div *ngIf="userName.errors?.['required']">
+            please Enter user name
+          </div>
+          <div *ngIf="userName.errors?.['minlength']">
+            user name must be at least {{userName.errors?.['minlength'].requiredLength}} characters
+            you enterd {{userName.errors?.['minlength'].actualLength}} characters
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          ngModel
+          #email="ngModel"
+          [(ngModel)]="user.email"
+          required
+          email
+          placeholder="Enter your email"
+        />
+        <div class="error" *ngIf="email.touched && email.invalid">
+          <div *ngIf="email.errors?.['required']">Please enter a email</div>
+          <div *ngIf="email.errors?.['email']">Please enter valid email</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="company" class="form-label">Company Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="company"
+          name="company"
+          ngModel
+          #company="ngModel"
+          [(ngModel)]="user.company?.name!"
+          required
+          placeholder="Enter your company"
+        />
+        <div class="error" *ngIf="company.touched && company.invalid">
+          <div *ngIf="company.errors?.['required']">Please Company Name</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="city" class="form-label">City</label>
+        <input
+          class="form-control"
+          type="text"
+          name="city"
+          id="city"
+          placeholder="Enter your City"
+          ngModel
+          #city="ngModel"
+          [(ngModel)]="user.address?.city!"
+          required
+          minlength="3"
+        />
+        <div class="error" *ngIf="city.touched && city.invalid">
+          <div *ngIf="city.errors?.['required']">Please enter City name</div>
+          <div *ngIf="city.errors?.['minlength']">
+            city must have at least {{city.errors?.['minlength'].requiredLength}} characters
+            you enterd {{city.errors?.['minlength'].actualLength}} characters
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="signUpForm.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

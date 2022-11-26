@@ -1,0 +1,12 @@
+note-app    	     -> command***
+student-app 	     -> command***
+news-api    	     -> backend***
+day04 -> weather-app -> 
+day05 -> express-app -> template**
+day05 -> news-app    -> template**
+usersInfo   	     -> angular***
+day13 -> firstApp    -> angular***
+day14 -> formsApp    -> angular***
+day16 -> postsApp    -> angular***
+day20 -> newsApp     -> fullStack***
+day20 -> task manger -> fullstack***(https://task-manager-app-frontend.herokuapp.com/)

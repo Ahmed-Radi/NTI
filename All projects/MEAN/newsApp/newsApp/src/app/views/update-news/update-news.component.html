@@ -1,0 +1,54 @@
+<div class="container">
+  <form
+    #AddNews="ngForm"
+    [formGroup]="editNewsForm"
+    (ngSubmit)="editNews(AddNews.value)"
+  >
+    <div class="mb-3">
+      <label for="title" class="form-label">title</label>
+      <input
+        type="email"
+        class="form-control"
+        id="title"
+        name="title"
+        formControlName="title"
+        [(ngModel)]="news.title"
+      />
+      <div class="error" *ngIf="editNewsForm.controls['title'].touched && editNewsForm.controls['title'].invalid">
+        <div *ngIf="editNewsForm.controls['title'].errors?.['required']">
+          Please enter a title
+        </div>
+        <div *ngIf="editNewsForm.controls['title'].errors?.['minlength']">
+          title must have at least {{newsValue['title'].errors?.['minlength'].requiredLength}}
+          you entered {{newsValue['title'].errors?.['minlength'].actualLength}}
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        name="description"
+        formControlName="description"
+        [(ngModel)]="news.description"
+      />
+      <div class="error" *ngIf="newsValue['description'].touched && newsValue['description'].invalid">
+        <div *ngIf="newsValue['description'].errors?.['required']">
+          Please entered description
+        </div>
+        <div *ngIf="newsValue['description'].errors?.['minlength']">
+          description must have at least {{newsValue['description'].errors?.['minlength'].requiredLength}}
+          you enterd {{newsValue['description'].errors?.['minlength'].actualLength}}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="image">Add image: </label>
+      <input type="file" id="image" (change)="addImageHandle($event)" width="200px" name="iamge" accept="image/*" />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="editNewsForm.invalid">Submit</button>
+  </form>
+</div>

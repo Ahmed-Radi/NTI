@@ -1,0 +1,99 @@
+<h2 class="text-align-center">reactive Form works!</h2>
+<form class="container" [formGroup]="contactForm">
+  <div class="mb-3">
+    <label for="fName" class="form-label">First Name</label>
+    <input
+      type="email"
+      class="form-control"
+      id="fName"
+      formControlName="firstName"
+    />
+    <div
+      class="error"
+      *ngIf="myValues['firstName'].touched && myValues['firstName'].invalid"
+    >
+      <div *ngIf="myValues['firstName'].errors?.['required']">
+        Please Enter First Name
+      </div>
+      <div *ngIf="myValues['firstName'].errors?.['minlength']">
+        Min Length must be
+        {{myValues['firstName'].errors?.['minlength'].requiredLength}}
+        you entered {{myValues['firstName'].errors?.['minlength'].actualLength}}
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="lNmae" class="form-label">Last Name</label>
+    <input
+      type="email"
+      class="form-control"
+      id="lNmae"
+      formControlName="lastName"
+    />
+    <div class="error" *ngIf="myValues['lastName'].touched && myValues['lastName'].invalid">
+      <div *ngIf="myValues['lastName'].errors?.['required']">
+        please Enter Last Name
+      </div>
+      <div *ngIf="myValues['lastName'].errors?.['minlength']">
+        Last Name must be
+        {{myValues['lastName'].errors?.['minlength'].requiredLength}}
+        you entered
+        {{myValues['lastName'].errors?.['minlength'].actualLength}}
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      formControlName="email"
+      placeholder="example@example.com"
+    />
+    <div
+      class="error"
+      *ngIf="myValues['email'].touched && myValues['email'].invalid"
+    >
+      <div *ngIf="myValues['email'].errors?.['required']">
+        Please Enter Email
+      </div>
+      <div *ngIf="myValues['email'].errors?.['email']">
+        Please Enter valid Email
+      </div>
+    </div>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="male" />
+    <label class="form-check-label" for="male"> Meal </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="female" />
+    <label class="form-check-label" for="female"> Female </label>
+  </div>
+
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+    <label class="form-check-label" for="exampleCheck1">isMarried</label>
+  </div>
+
+  <div>
+    <select class="form-select" formControlName="country">
+      <option selected>Select Country from menu</option>
+      <option value="1" *ngFor="let i of countries">{{ i.country }}</option>
+    </select>
+    <div
+      class="error"
+      *ngIf="myValues['country'].touched && myValues['country'].invalid"
+    >
+      <div *ngIf="myValues['country'].errors?.['required']">
+        Please Select Country from menu
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

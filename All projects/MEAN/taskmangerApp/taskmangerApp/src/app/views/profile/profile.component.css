@@ -1,0 +1,13 @@
+.info {
+  padding: 15px;
+  margin-top: 20px;
+}
+h2 span,
+.info span {
+  font-weight: 600;
+  color: #5757ce;
+  text-transform: capitalize;
+}
+.buttons a {
+  margin-left: 10px;
+}

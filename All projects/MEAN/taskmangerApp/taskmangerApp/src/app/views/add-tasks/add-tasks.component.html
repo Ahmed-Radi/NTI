@@ -1,0 +1,60 @@
+<div class="container">
+    <form [formGroup]="taskForm" (ngSubmit)="addTask(taskForm.value)">
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control class"
+          id="title"
+          name="title"
+          formControlName="title"
+        />
+        <div class="error" *ngIf="myValues['title'].touched && myValues['title'].invalid">
+          <div *ngIf="myValues['title'].errors?.['required']">Please Enter Tiltle</div>
+          <div *ngIf="myValues['title'].errors?.['minlength']">
+            Description should have at least
+            {{myValues['title'].errors?.['minlength'].requiredLength}} characters you entered
+            {{myValues['title'].errors?.['minlength'].actualLength}}
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+
+      <div class="mb-3">
+        <label for="body" class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="body"
+          name="description"
+          formControlName="description"
+        />
+        <div class="error" *ngIf="myValues['description'].touched && myValues['description'].invalid">
+          <div *ngIf="myValues['description'].errors?.['required']">Please enter body</div>
+          <div *ngIf="myValues['description'].errors?.['minlength']">
+            Description should have at least
+            {{myValues['description'].errors?.['minlength'].requiredLength}} you entered
+            {{myValues['description'].errors?.['minlength'].actualLength}}
+          </div>
+        </div>
+      </div>
+
+      <!-- complate -->
+
+      <div class="mb-3">
+        <label for="complete" class="form-check-label">complete</label>
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="complate"
+          formControlName="complete"
+          name="complete"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">
+        Submit
+      </button>
+    </form>
+  </div>
